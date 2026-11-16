@@ -1,0 +1,147 @@
+:root {
+  --bg-black: #000000;
+  --card-bg: #17191f;
+  --card-border: rgba(255, 255, 255, 0.06);
+  --cyan-core: #dff7ff;
+  --cyan-bright: #5ad1ff;
+  --cyan-mid: #1c92e8;
+  --cyan-deep: #0b4f9c;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--bg-black);
+  color: #e6f4ff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+.app {
+  width: min(560px, 100%);
+  min-height: 100vh;
+  padding: 28px 18px 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.hero-header {
+  text-align: center;
+  z-index: 2;
+  margin-bottom: -14px;
+}
+
+.love-title {
+  font-family: "Pacifico", cursive;
+  font-size: clamp(2.15rem, 6vw, 2.85rem);
+  font-weight: 400;
+  color: #bceeff;
+  letter-spacing: 0.8px;
+  user-select: none;
+  text-shadow:
+    0 0 6px rgba(155, 232, 255, 0.95),
+    0 0 18px rgba(56, 189, 248, 0.85),
+    0 0 36px rgba(14, 165, 233, 0.65),
+    0 0 60px rgba(2, 132, 199, 0.45);
+  animation: titleGlow 3.6s ease-in-out infinite alternate;
+}
+
+.heart-viewport {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  aspect-ratio: 900 / 780;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#heartCanvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.floor-reflection {
+  position: absolute;
+  bottom: 11%;
+  width: 54%;
+  height: 18px;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(165, 240, 255, 0.88) 0%,
+    rgba(56, 189, 248, 0.45) 38%,
+    rgba(14, 165, 233, 0.14) 65%,
+    transparent 80%
+  );
+  filter: blur(7px);
+  pointer-events: none;
+  animation: reflectionBreath 3.2s ease-in-out infinite;
+}
+
+.code-panel {
+  width: min(460px, 100%);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin-top: 6px;
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.85),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  overflow-x: auto;
+}
+
+.code-lines pre {
+  font-family: "Fira Code", Consolas, "Courier New", monospace;
+  font-size: clamp(0.76rem, 2.3vw, 0.86rem);
+  line-height: 1.55;
+  color: #c9d1d9;
+  tab-size: 2;
+}
+
+.c-var  { color: #ff7b72; }
+.c-kw   { color: #d2a8ff; }
+.c-fn   { color: #79c0ff; }
+.c-arg  { color: #ffa657; }
+.c-this { color: #ff7b72; }
+.c-str  { color: #a5d6ff; }
+.c-num  { color: #79c0ff; }
+
+@keyframes titleGlow {
+  0% {
+    filter: brightness(0.95);
+    transform: translateY(0px);
+  }
+  100% {
+    filter: brightness(1.15);
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes reflectionBreath {
+  0%, 100% {
+    transform: scaleX(0.92);
+    opacity: 0.72;
+  }
+  50% {
+    transform: scaleX(1.12);
+    opacity: 1;
+  }
+}
